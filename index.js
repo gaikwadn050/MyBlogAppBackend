@@ -10,7 +10,7 @@ const multer  = require('multer')
 const uploadMiddleware = multer({ dest: 'uploads/' });
 const fs = require('fs');
 const BASE_URL = process.env.BASE_URL
-
+const PORT = process.env.PORT || 5555
 
 
 const salt = bcrypt.genSaltSync(10);
@@ -172,6 +172,6 @@ res.json(
 
   
 
-app.listen(5555,console.log("server started"))
+app.listen(PORT,console.log(`server started ${PORT}`))
 //mongodb+srv://blog:Trust@9012033@cluster0.siopql4.mongodb.net/?retryWrites=true&w=majority
 //Trust@9012033
