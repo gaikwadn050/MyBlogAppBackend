@@ -31,7 +31,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'))
 
 //mongodb connection
   mongoose.connect(
-    'mongodb+srv://blog:blog123@cluster0.siopql4.mongodb.net/?retryWrites=true&w=majority',
+    `${BASE_URL}`,
     (err) => {
      if(err) console.log(err) 
      else console.log("mongdb is connected");
