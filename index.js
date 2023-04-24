@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors =require('cors')
 const app = express()
@@ -11,6 +12,10 @@ const uploadMiddleware = multer({ dest: 'uploads/' });
 const fs = require('fs');
 const BASE_URL = process.env.BASE_URL
 const PORT = process.env.PORT || 5555
+const DATABASE = process.env.DATABASE
+console.log(`${DATABASE}`)
+
+
 
 
 const salt = bcrypt.genSaltSync(10);
@@ -30,14 +35,14 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'))
 
 //mongodb connection
-  mongoose.connect(
-    `${BASE_URL}`,
-    (err) => {
-     if(err) console.log(err) 
-     else console.log("mongdb is connected");
-    }
-  ).then(()=>console.log('connected'))
-  .catch(e=>console.log(e, 'mongo error ok'));
+mongoose.connect(
+  process.env.DATABASE,
+  (err) => {
+   if(err) console.log(err) 
+   else console.log("mongdb is connected");
+  }
+).then(()=>console.log('connected'))
+.catch(e=>console.log(e, 'mongo error ok'));
 
 
 
