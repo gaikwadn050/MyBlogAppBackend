@@ -36,11 +36,11 @@ app.use('/uploads', express.static(__dirname + '/uploads'))
 
 //mongodb connection
 mongoose.connect(
-  process.env.DATABASE,
-  (err) => {
+process.env.DATABASE,  (err) => {
    if(err) console.log(err) 
    else console.log("mongdb is connected");
   }
+  
 ).then(()=>console.log('connected'))
 .catch(e=>console.log(e, 'mongo error ok'));
 
